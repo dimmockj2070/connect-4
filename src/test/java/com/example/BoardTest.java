@@ -1,8 +1,7 @@
 package com.example;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Test;
 
@@ -12,25 +11,25 @@ public class BoardTest {
         Board b = new Board(7, 8);
 
         int x = b.getPositionStatus(1, 1);
-        assertEquals(0, x);
+        assertThat(x, is(0));
 
         b.setPositionStatus(3, 6, 1);
         x = b.getPositionStatus(3, 6);
-        assertEquals(1, x);
+        assertThat(x, is(1));
 
         b.placePiece(3, 2);
         x = b.getPositionStatus(3, 7);
-        assertEquals(2, x);
+        assertThat(x, is(2));
 
-        // b.printBoard();
+        b.printBoard();
 
-        assertFalse(b.checkWin(2));
+        assertThat(b.checkWin(2), is(false));
 
         b.placePiece(0, 2);
         b.placePiece(1, 2);
         b.placePiece(2, 2);
 
-        assertTrue(b.checkWin(2));
+        assertThat(b.checkWin(2), is(true));
     }
 
     @Test
@@ -42,7 +41,7 @@ public class BoardTest {
         b.placePiece(0, 1);
         b.placePiece(0, 1);
 
-        assertTrue(b.checkWin(1));
+        assertThat(b.checkWin(1), is(true));
     }
 
     @Test
