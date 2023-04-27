@@ -1,4 +1,6 @@
-public class Main{
+package com.example;
+
+public class Main {
     public static void main(String[] args){
         Board b = new Board(7, 8);
         int x = b.getPositionStatus(1, 1);
