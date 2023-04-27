@@ -1,3 +1,5 @@
+package com.example;
+
 public class Board {
     private int[][] positions;
     private int width;
