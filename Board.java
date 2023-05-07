@@ -1,5 +1,9 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Board {
     private int[][] positions;
+    
     private int width;
     private int height;
     private static final boolean DEBUG = false;
@@ -118,6 +122,12 @@ public class Board {
     public int[][] getBoardStatus(){
         return positions;
     }
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
     public void printBoard(){
         for(int[] row : positions){
             String theRow = "";
@@ -126,5 +136,39 @@ public class Board {
             }
             System.out.println(theRow);
         }
+    }
+    public void drawBoard(Graphics window, int graphWidth, int graphHeight){
+        window.setColor(Color.white);
+        window.fillRect(0, 0, graphWidth, graphHeight);
+        window.setColor(Color.yellow);
+        window.fillRect(0, calcYPos(0, graphHeight), graphWidth, graphHeight - calcYPos(0, graphHeight));
+        for(int x = 0; x < positions[0].length; x++){
+            for(int y = 0; y < positions.length; y++){
+                drawChip(window, x, y, graphWidth, graphHeight);
+            }
+        }
+    }
+    private void drawChip(Graphics window, int x, int y, int w, int h){
+        int state = positions[y][x];
+        if(state == 0){
+            window.setColor(Color.white);
+        }else if(state == 1){
+            window.setColor(Color.blue);
+        }else{
+            window.setColor(Color.red);
+        }
+        window.fillOval(calcXPos(x, w), calcYPos(y, h), calcChipWidth(w), calcChipHeight(h));
+    }
+    public int calcXPos(int x, int w){
+        return w / positions[0].length * x;
+    }
+    public int calcChipWidth(int w){
+        return w / positions[0].length * 5 / 6;
+    }
+    public int calcYPos(int y, int h){
+        return h / (positions.length + 1) * (y + 1);
+    }
+    public int calcChipHeight(int h){
+        return h / (positions.length + 1) * 5 / 6;
     }
 }
