@@ -166,7 +166,7 @@ public class Board {
         return w / positions[0].length * 5 / 6;
     }
     public int calcYPos(int y, int h){
-        return h / (positions.length + 1) * (y + 1);
+        return h / (positions.length + 1) * (y + 1) * 19 / 20;
     }
     public int calcChipHeight(int h){
         return h / (positions.length + 1) * 5 / 6;

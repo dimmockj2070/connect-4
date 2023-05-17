@@ -9,22 +9,12 @@ public class TheGame extends JFrame{
 
     public TheGame(){
         super("Connect4");
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("Enter Width: ");
-        width=keyboard.nextInt();
-        System.out.print("Enter Height: ");
-        height = keyboard.nextInt();
-        System.out.print("Enter board width and height: ");
-        boardWidth = keyboard.nextInt();
-        boardHeight = keyboard.nextInt();
+       width = 798;
+       height = 684;
+       boardWidth = 7;
+       boardHeight = 5;
         //add any other needed vars here
 
-        if(width == 0){
-            width = 800; // maybe change these
-        }
-        if(height == 0){
-            height = 600;
-        }
         setSize(width, height);
         GraphicsStuff game = new GraphicsStuff(boardWidth, boardHeight, width, height);
 
