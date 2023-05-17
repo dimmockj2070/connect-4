@@ -60,11 +60,13 @@ public class GraphicsStuff extends Canvas implements KeyListener, Runnable {
             }
             top.draw(graphToBack, pixWidth, pixHeight);
         }else if(blueWin){
+            //System.out.println("blue win");
             graphToBack.setColor(Color.blue);
-            graphToBack.drawString("Blue wins", 0, 0);
+            graphToBack.drawString("Blue wins", 10, 10);
         }else{
+            //System.out.println("red win");
             graphToBack.setColor(Color.red);
-            graphToBack.drawString("Red wins!", 0, 0);
+            graphToBack.drawString("Red wins!", 10, 10);
         }
 
         twoDGraph.drawImage(back, null, 0, 0);
