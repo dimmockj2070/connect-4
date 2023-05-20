@@ -53,4 +53,16 @@ public class TopRow { //the chip you are about to place
         window.fillOval(b.calcXPos(chipPos, w), b.calcYPos(-1, h), b.calcChipWidth(w), b.calcChipHeight(h));
 
     }
+
+    public boolean getIsBlue(){
+        return isBlue;
+    }
+
+    public void setChipPos(int pos){
+        chipPos = pos;
+    }
+
+    public int getChipPos(){
+        return chipPos;
+    }
 }
