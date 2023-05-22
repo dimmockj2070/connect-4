@@ -7,8 +7,9 @@ public class Main{
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Type \"S\" to make this a server, or anything else to make it a client");
         if(keyboard.nextLine().toLowerCase().equals("s")){
-            System.out.println("Enter port number:");
-            Connect4Server server = new Connect4Server(keyboard.nextInt());
+            //System.out.println("Enter port number:");
+            Connect4Server server = new Connect4Server(8000);
+            server.start();
         }else{
             System.out.println("Enter host name and port number:");
             TheGame.main(args);

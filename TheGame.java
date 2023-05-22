@@ -18,9 +18,9 @@ public class TheGame extends JFrame{
         //add any other needed vars here
 
         setSize(width, height);
-        int port = keyboard.nextInt();
-        String hostname = keyboard.nextLine();
-        GraphicsStuff game = new GraphicsStuff(boardWidth, boardHeight, width, height, port, hostname);
+        //int port = keyboard.nextInt();
+        //String hostname = keyboard.next();
+        GraphicsStuff game = new GraphicsStuff(boardWidth, boardHeight, width, height, 8000, "localhost");
 
         ((Component)game).setFocusable(true);
         getContentPane().add(game);

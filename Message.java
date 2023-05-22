@@ -16,4 +16,8 @@ public class Message implements Serializable {
     public int getMove() {
         return move;
     }
+
+    public String toString(){
+        return type + " " + move;
+    }
 }

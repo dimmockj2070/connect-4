@@ -50,6 +50,7 @@ public class GraphicsStuff extends Canvas implements KeyListener, Runnable {
 
         Graphics graphToBack = back.createGraphics();
         b.drawBoard(graphToBack, pixWidth, pixHeight);
+        System.out.println("Player " + (playerNum + 1) + " painting");
 
         redWin = b.checkWin(2);
         blueWin = b.checkWin(1);
@@ -67,6 +68,7 @@ public class GraphicsStuff extends Canvas implements KeyListener, Runnable {
                     
                     try{
                         client.sendMessage("p" + (playerNum + 1) + "m", top.getChipPos());
+                        System.out.println("sent message to server" + (playerNum + 1) + " " + top.getChipPos());
                     } catch(Exception e){
 
                     }
@@ -76,10 +78,12 @@ public class GraphicsStuff extends Canvas implements KeyListener, Runnable {
         }else{
             try{
                 Message m = client.receiveMessage();
+                System.out.println(m);
                 if((m.getType().equals("p1m") && playerNum == 1) || (m.getType().equals("p2m") && playerNum == 0)){
                     top.setChipPos(m.getMove());
                     top.place();
                     client.sendMessage(m.getType(), m.getMove());
+                    //System.out.println(m);
                 }
             } catch(Exception e){
 

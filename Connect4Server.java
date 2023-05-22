@@ -17,8 +17,8 @@ public class Connect4Server {
             ObjectInputStream inputStreamP1 = new ObjectInputStream(player1.getInputStream());
             Message m = (Message) inputStreamP1.readObject();
             if(m.getType().equals("p1m")){
-                outputStreamP1.writeObject(m);
                 outputStreamP2.writeObject(m);
+                System.out.println("server sending message to player 2" + " " + m);
                 if(!m.getType().equals("win")){
                     run(false);
                 }
@@ -28,9 +28,10 @@ public class Connect4Server {
         }else{
             ObjectInputStream inputStreamP2 = new ObjectInputStream(player2.getInputStream());
             Message m = (Message) inputStreamP2.readObject();
+            System.out.println(m);
             if(m.getType().equals("p2m")){
                 outputStreamP1.writeObject(m);
-                outputStreamP2.writeObject(m);
+                System.out.println("server sending message to player 1" + " " + m);
                 if(!m.getType().equals("win")){
                     run(true);
                 }
@@ -61,6 +62,8 @@ public class Connect4Server {
         // tell it what player it is
         message = new Message("p", 1);
         outputStreamP2.writeObject(message);
+
+        run(true);
         
         // TODO: handle game logic and communication
     }
